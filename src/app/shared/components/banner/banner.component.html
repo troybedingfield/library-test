@@ -1,0 +1,30 @@
+<div *ngIf="showBanner" class="banner banner-{{ color }}">
+    <div class="content-section">
+        <ng-container [ngTemplateOutlet]="detailMessages!.length > 0 ? detailBanner : singleLineBanner"></ng-container>
+    </div>
+    <div *ngIf="showClose" class="close clickable" [class.close-with-detail]="detailMessages!.length > 0"
+        (click)="onCloseClick()"></div>
+</div>
+
+
+<ng-template #singleLineBanner>
+    <div [innerHTML]="primaryText"></div>
+</ng-template>
+
+
+<ng-template #detailBanner>
+    <div class="detail-header">
+        <span class="clickable" (click)="onExpandCollapse()">
+            <i class="margin-right8 banner-expander-{{ color }}"
+                [ngClass]="isExpanded ? 'icon-expand' : 'icon-forward'"></i>
+            <b>{{ primaryText }}</b>
+        </span>
+    </div>
+    <app-expandable [expanded]="isExpanded">
+        <ul [ngClass]="detailMessages?.length == 1 ? 'single-detail-message' : 'multiple-detail-messages'">
+            <li *ngFor="let msg of detailMessages">
+                {{ msg }}
+            </li>
+        </ul>
+    </app-expandable>
+</ng-template>

@@ -1,0 +1,72 @@
+.banner {
+    user-select: none;
+    display: flex;
+    border-radius: 4px;
+    padding: 8px 24px;
+}
+
+.content-section {
+    flex-grow: 1;
+    padding-right: 10px;
+}
+
+.banner-info {
+    background-color: #ECDDFF;
+    color: #9747FF;
+}
+
+.banner-success {
+    background-color: lightgreen;
+    color: green;
+}
+
+.banner-warning {
+    background-color: lightyellow;
+    color: orange;
+}
+
+.banner-error {
+    background-color: lightpink;
+    color: darkred;
+}
+
+.banner-expander-info {
+    color: #9747FF;
+}
+
+.banner-expander-success {
+    color: green;
+}
+
+.banner-expander-warning {
+    color: orange;
+}
+
+.banner-expander-error {
+    color: darkred;
+}
+
+.close {
+    float: right;
+    padding: 2px 0;
+
+    &::before {
+        content: '\2715';
+    }
+}
+
+.close-with-detail {
+    padding: 8px 0;
+}
+
+.detail-header {
+    padding: 6px 0 7px 0;
+}
+
+.single-detail-message {
+    padding-left: 24px;
+}
+
+.multiple-detail-messages li {
+    list-style-type: circle;
+}

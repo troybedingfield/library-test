@@ -7,7 +7,6 @@
 
 .content-section {
     flex-grow: 1;
-    padding-right: 10px;
 }
 
 .banner-info {
@@ -30,43 +29,74 @@
     color: darkred;
 }
 
+.banner-expander {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+    // height: 0;
+    margin-right: 8px;
+    position: relative;
+
+    &.expanded {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        top: -2px;
+    }
+
+    &.collapsed {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+
+    }
+}
+
 .banner-expander-info {
-    color: #9747FF;
+    border-color: #9747FF;
 }
 
 .banner-expander-success {
-    color: green;
+    border-color: green;
 }
 
 .banner-expander-warning {
-    color: orange;
+    border-color: orange;
 }
 
 .banner-expander-error {
-    color: darkred;
+    border-color: darkred;
 }
 
 .close {
     float: right;
-    padding: 2px 0;
 
     &::before {
         content: '\2715';
     }
 }
 
-.close-with-detail {
-    padding: 8px 0;
-}
-
 .detail-header {
-    padding: 6px 0 7px 0;
+    display: flex;
 }
 
 .single-detail-message {
-    padding-left: 24px;
+    padding-left: 32px;
 }
 
-.multiple-detail-messages li {
-    list-style-type: circle;
+.single-header {
+    display: flex;
+
+}
+
+
+
+.multiple-detail-messages {
+    padding-left: 32px;
+}
+
+.primary-text {
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }

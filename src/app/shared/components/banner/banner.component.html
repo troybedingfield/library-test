@@ -2,23 +2,29 @@
     <div class="content-section">
         <ng-container [ngTemplateOutlet]="detailMessages!.length > 0 ? detailBanner : singleLineBanner"></ng-container>
     </div>
-    <div *ngIf="showClose" class="close clickable" [class.close-with-detail]="detailMessages!.length > 0"
-        (click)="onCloseClick()"></div>
 </div>
 
 
 <ng-template #singleLineBanner>
-    <div [innerHTML]="primaryText"></div>
+
+    <div class="single-header">
+        <div class="primary-text">{{ primaryText }} </div>
+        <div *ngIf="showClose" class="close clickable" [class.close-with-detail]="detailMessages!.length > 0"
+            (click)="onCloseClick()"></div>
+
+    </div>
 </ng-template>
 
 
 <ng-template #detailBanner>
     <div class="detail-header">
-        <span class="clickable" (click)="onExpandCollapse()">
-            <i class="margin-right8 banner-expander-{{ color }}"
-                [ngClass]="isExpanded ? 'icon-expand' : 'icon-forward'"></i>
+        <span class="primary-text clickable" (click)="onExpandCollapse()">
+            <span class="banner-expander banner-expander-{{ color }}"
+                [ngClass]="isExpanded ? 'expanded' : 'collapsed'"></span>
             <b>{{ primaryText }}</b>
         </span>
+        <div *ngIf="showClose" class="close clickable" [class.close-with-detail]="detailMessages!.length > 0"
+            (click)="onCloseClick()"></div>
     </div>
     <app-expandable [expanded]="isExpanded">
         <ul [ngClass]="detailMessages?.length == 1 ? 'single-detail-message' : 'multiple-detail-messages'">

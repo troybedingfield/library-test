@@ -99,11 +99,11 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n  <p>button</p>\r\n  <div class=\"example\">\r\n    <p>Library</p>\r\n    <troy-button [upperCase]=\"true\" [color]=\"'success'\" [customBGColor]=\"'#000000'\">test</troy-button>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-button [upperCase]=\"true\" [color]=\"'success'\" [customBGColor]=\"'#000000'\">Button</app-button>\r\n  </div>\r\n\r\n  <p>banner</p>\r\n  <div class=\"example\">\r\n    <p>Library</p>\r\n    <troy-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\" [detailMessages]=\"['test']\" [showClose]=\"true\">\r\n    </troy-banner>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\" [detailMessages]=\"['test']\" [showClose]=\"true\">\r\n    </app-banner>\r\n  </div>\r\n</div>"
+            "templateData": "<div class=\"container\">\r\n  <p>button</p>\r\n  <div class=\"example\">\r\n    <p>Library</p>\r\n    <troy-button [upperCase]=\"true\" [color]=\"'success'\" [customBGColor]=\"'#000000'\">test</troy-button>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-button [upperCase]=\"true\" [color]=\"'success'\" [customBGColor]=\"'#000000'\">Button</app-button>\r\n  </div>\r\n\r\n  <p>banner</p>\r\n  <div class=\"example\">\r\n    <p>Library</p>\r\n    <troy-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\" [detailMessages]=\"['test']\" [showClose]=\"true\">\r\n    </troy-banner>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\" [detailMessages]=\"['test']\" [showClose]=\"true\">\r\n    </app-banner>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\">\r\n    </app-banner>\r\n  </div>\r\n</div>"
         },
         {
             "name": "BannerComponentLocal",
-            "id": "component-BannerComponentLocal-084f91f25e2cc691c95482bd4b4016b31274100c4bb867b242eb5c679498e546560718503d7cdc066938b1676d0a0884ceaa91c419326e682b488c975b177462",
+            "id": "component-BannerComponentLocal-22490c35f1c4d6f8c1d0465cb1ab343be0eb33ae90eb68db31c0cf45c97aa7f64a4294bae1c9efb1a6f53211a0b6dd1f2ca2a05273d7060d8a265576d5c0725a",
             "file": "src/app/shared/components/banner/banner.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -130,6 +130,7 @@
                 },
                 {
                     "name": "detailMessages",
+                    "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 14,
@@ -147,7 +148,7 @@
                 },
                 {
                     "name": "showClose",
-                    "defaultValue": "false",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 16,
@@ -172,7 +173,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "boolean",
                     "optional": false,
                     "description": "",
                     "line": 19
@@ -236,7 +237,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { ExpandableComponentLocal } from '../expandable/expandable.component';\r\nimport { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-banner',\r\n  standalone: true,\r\n  imports: [ExpandableComponentLocal, NgTemplateOutlet, NgIf, NgClass, NgFor],\r\n  templateUrl: './banner.component.html',\r\n  styleUrl: './banner.component.scss'\r\n})\r\nexport class BannerComponentLocal {\r\n  @Input() primaryText = '';\r\n  @Input() detailMessages: string[] | undefined;\r\n  @Input() color: 'info' | 'success' | 'warning' | 'error' = 'info';\r\n  @Input() showClose = false;\r\n\r\n  isExpanded: boolean = true;\r\n  showBanner = true;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  onExpandCollapse() {\r\n    this.isExpanded = !this.isExpanded;\r\n  }\r\n\r\n  onCloseClick(): void {\r\n    this.showBanner = false;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { ExpandableComponentLocal } from '../expandable/expandable.component';\r\nimport { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-banner',\r\n  standalone: true,\r\n  imports: [ExpandableComponentLocal, NgTemplateOutlet, NgIf, NgClass, NgFor],\r\n  templateUrl: './banner.component.html',\r\n  styleUrl: './banner.component.scss'\r\n})\r\nexport class BannerComponentLocal {\r\n  @Input() primaryText = '';\r\n  @Input() detailMessages: string[] | undefined = [];\r\n  @Input() color: 'info' | 'success' | 'warning' | 'error' = 'info';\r\n  @Input() showClose: boolean = true;\r\n\r\n  isExpanded: boolean = true;\r\n  showBanner: boolean = true;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  onExpandCollapse() {\r\n    this.isExpanded = !this.isExpanded;\r\n  }\r\n\r\n  onCloseClick(): void {\r\n    this.showBanner = false;\r\n  }\r\n}\r\n",
             "styleUrl": "./banner.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -250,7 +251,7 @@
                 "line": 19
             },
             "extends": [],
-            "templateData": "<div *ngIf=\"showBanner\" class=\"banner banner-{{ color }}\">\r\n    <div class=\"content-section\">\r\n        <ng-container [ngTemplateOutlet]=\"detailMessages!.length > 0 ? detailBanner : singleLineBanner\"></ng-container>\r\n    </div>\r\n    <div *ngIf=\"showClose\" class=\"close clickable\" [class.close-with-detail]=\"detailMessages!.length > 0\"\r\n        (click)=\"onCloseClick()\"></div>\r\n</div>\r\n\r\n\r\n<ng-template #singleLineBanner>\r\n    <div [innerHTML]=\"primaryText\"></div>\r\n</ng-template>\r\n\r\n\r\n<ng-template #detailBanner>\r\n    <div class=\"detail-header\">\r\n        <span class=\"clickable\" (click)=\"onExpandCollapse()\">\r\n            <i class=\"margin-right8 banner-expander-{{ color }}\"\r\n                [ngClass]=\"isExpanded ? 'icon-expand' : 'icon-forward'\"></i>\r\n            <b>{{ primaryText }}</b>\r\n        </span>\r\n    </div>\r\n    <app-expandable [expanded]=\"isExpanded\">\r\n        <ul [ngClass]=\"detailMessages?.length == 1 ? 'single-detail-message' : 'multiple-detail-messages'\">\r\n            <li *ngFor=\"let msg of detailMessages\">\r\n                {{ msg }}\r\n            </li>\r\n        </ul>\r\n    </app-expandable>\r\n</ng-template>"
+            "templateData": "<div *ngIf=\"showBanner\" class=\"banner banner-{{ color }}\">\r\n    <div class=\"content-section\">\r\n        <ng-container [ngTemplateOutlet]=\"detailMessages!.length > 0 ? detailBanner : singleLineBanner\"></ng-container>\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #singleLineBanner>\r\n\r\n    <div class=\"single-header\">\r\n        <div class=\"primary-text\">{{ primaryText }} </div>\r\n        <div *ngIf=\"showClose\" class=\"close clickable\" [class.close-with-detail]=\"detailMessages!.length > 0\"\r\n            (click)=\"onCloseClick()\"></div>\r\n\r\n    </div>\r\n</ng-template>\r\n\r\n\r\n<ng-template #detailBanner>\r\n    <div class=\"detail-header\">\r\n        <span class=\"primary-text clickable\" (click)=\"onExpandCollapse()\">\r\n            <span class=\"banner-expander banner-expander-{{ color }}\"\r\n                [ngClass]=\"isExpanded ? 'expanded' : 'collapsed'\"></span>\r\n            <b>{{ primaryText }}</b>\r\n        </span>\r\n        <div *ngIf=\"showClose\" class=\"close clickable\" [class.close-with-detail]=\"detailMessages!.length > 0\"\r\n            (click)=\"onCloseClick()\"></div>\r\n    </div>\r\n    <app-expandable [expanded]=\"isExpanded\">\r\n        <ul [ngClass]=\"detailMessages?.length == 1 ? 'single-detail-message' : 'multiple-detail-messages'\">\r\n            <li *ngFor=\"let msg of detailMessages\">\r\n                {{ msg }}\r\n            </li>\r\n        </ul>\r\n    </app-expandable>\r\n</ng-template>"
         },
         {
             "name": "ButtonComponentLocal",

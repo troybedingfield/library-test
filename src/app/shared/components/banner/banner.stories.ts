@@ -23,7 +23,6 @@ const meta: Meta<BannerComponentLocal> = {
         }),
     ],
     argTypes: {
-
     },
     args: {
         primaryText: 'This is a banner'

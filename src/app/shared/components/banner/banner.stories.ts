@@ -38,19 +38,89 @@ export default meta;
 type Story = StoryObj<BannerComponentLocal>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const Primary_Single_Message: Story = {
     args: {
 
     },
 };
 
-export const Detailed_Msssage: Story = {
+export const Primary_Detailed_Message: Story = {
     args: {
-        detailMessages: ['Item 1', 'Item 2', 'Item 3']
+        detailedMessages: ['Item 1', 'Item 2', 'Item 3']
     },
 };
 
-export const Color_Info: Story = {
-
+export const Single_Message_No_Close_Button: Story = {
+    args: {
+        showClose: false
+    },
 };
 
+
+export const Primary_Detailed_Message_No_Close_Button: Story = {
+    args: {
+        showClose: false,
+        detailedMessages: ['Item 1', 'Item 2', 'Item 3']
+    },
+};
+
+
+export const Single_Message_Color_Info: Story = {
+    args: {
+        color: 'info'
+    },
+};
+
+export const Detailed_Message_Color_Info: Story = {
+    args: {
+        color: 'info',
+        detailedMessages: ['Item 1', 'Item 2', 'Item 3']
+    },
+};
+
+
+export const Single_Message_Color_Success: Story = {
+    args: {
+        color: 'success'
+    },
+};
+
+export const Detailed_Message_Color_Success: Story = {
+    args: {
+        color: 'success',
+        detailedMessages: ['Item 1', 'Item 2', 'Item 3']
+    },
+};
+
+export const Single_Message_Color_Warning: Story = {
+    args: {
+        color: 'warning'
+    },
+};
+
+export const Detailed_Message_Color_Warning: Story = {
+    args: {
+        color: 'warning',
+        detailedMessages: ['Item 1', 'Item 2', 'Item 3']
+    },
+};
+
+export const Single_Message_Color_Error: Story = {
+    args: {
+        color: 'error'
+    },
+};
+
+export const Detailed_Message_Color_Error: Story = {
+    args: {
+        color: 'error',
+        detailedMessages: ['Item 1', 'Item 2', 'Item 3']
+    },
+};
+
+export const Detailed_Message_Collapsed: Story = {
+    args: {
+        isExpanded: false,
+        detailedMessages: ['Item 1', 'Item 2', 'Item 3']
+    },
+};

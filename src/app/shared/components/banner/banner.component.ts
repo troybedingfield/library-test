@@ -11,7 +11,7 @@ import { NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 })
 export class BannerComponentLocal {
   @Input() primaryText = '';
-  @Input() detailMessages: string[] | undefined = [];
+  @Input() detailedMessages: string[] | undefined = [];
   @Input() color: 'info' | 'success' | 'warning' | 'error' = 'info';
   @Input() showClose: boolean = true;
 

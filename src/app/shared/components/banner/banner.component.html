@@ -1,6 +1,7 @@
 <div *ngIf="showBanner" class="banner banner-{{ color }}">
     <div class="content-section">
-        <ng-container [ngTemplateOutlet]="detailMessages!.length > 0 ? detailBanner : singleLineBanner"></ng-container>
+        <ng-container
+            [ngTemplateOutlet]="detailedMessages!.length > 0 ? detailBanner : singleLineBanner"></ng-container>
     </div>
 </div>
 
@@ -9,7 +10,7 @@
 
     <div class="single-header">
         <div class="primary-text">{{ primaryText }} </div>
-        <div *ngIf="showClose" class="close clickable" [class.close-with-detail]="detailMessages!.length > 0"
+        <div *ngIf="showClose" class="close clickable" [class.close-with-detail]="detailedMessages!.length > 0"
             (click)="onCloseClick()"></div>
 
     </div>
@@ -23,12 +24,12 @@
                 [ngClass]="isExpanded ? 'expanded' : 'collapsed'"></span>
             <b>{{ primaryText }}</b>
         </span>
-        <div *ngIf="showClose" class="close clickable" [class.close-with-detail]="detailMessages!.length > 0"
+        <div *ngIf="showClose" class="close clickable" [class.close-with-detail]="detailedMessages!.length > 0"
             (click)="onCloseClick()"></div>
     </div>
     <app-expandable [expanded]="isExpanded">
-        <ul [ngClass]="detailMessages?.length == 1 ? 'single-detail-message' : 'multiple-detail-messages'">
-            <li *ngFor="let msg of detailMessages">
+        <ul [ngClass]="detailedMessages?.length == 1 ? 'single-detail-message' : 'multiple-detail-messages'">
+            <li *ngFor="let msg of detailedMessages">
                 {{ msg }}
             </li>
         </ul>

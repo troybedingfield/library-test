@@ -26,7 +26,124 @@
             "extends": []
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "ToastService",
+            "id": "injectable-ToastService-ba262d44713fb17704c548e2295901f73525974b117881e6411fac5cb6ef9a0e5dfe5e0ccefc7518e61d9982b34bd78ff0bb5806a9ee6c1fb08efe9fb23b4d28",
+            "file": "src/app/shared/services/toast.service.ts",
+            "properties": [
+                {
+                    "name": "showToast$",
+                    "defaultValue": "new BehaviorSubject<boolean>(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BehaviorSubject<boolean>",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "toastMessage$",
+                    "defaultValue": "new BehaviorSubject<string>('Default Toast Message')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BehaviorSubject<string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "toastState$",
+                    "defaultValue": "new BehaviorSubject<string>(TOAST_STATE.success)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BehaviorSubject<string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "dismissToast",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "showToast",
+                    "args": [
+                        {
+                            "name": "toastState",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "toastMsg",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "toastState",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "toastMsg",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\nexport const TOAST_STATE = {\r\n  success: 'success-toast',\r\n  warning: 'warning-toast',\r\n  danger: 'danger-toast'\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class ToastService {\r\n\r\n  // The boolean that drives the toast's 'open' vs. 'close' behavior.  \r\n  public showToast$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);\r\n\r\n  // The message string that'll bind and display on the toast. \r\n  public toastMessage$: BehaviorSubject<string> = new BehaviorSubject<string>('Default Toast Message');\r\n\r\n  // The state that will add a style class to the component. \r\n  public toastState$: BehaviorSubject<string> = new BehaviorSubject<string>(TOAST_STATE.success);\r\n\r\n  constructor() { }\r\n\r\n  showToast(toastState: string, toastMsg: string): void {\r\n\r\n    // This will update the toastState to the toastState passed into the function\r\n    this.toastState$.next(toastState);\r\n\r\n    // This updates the toastMessage to the toastMsg passed into the function\r\n    this.toastMessage$.next(toastMsg);\r\n\r\n    // This will update the showToast trigger to 'true'\r\n    this.showToast$.next(true);\r\n  }\r\n\r\n  // This updates the showToast behavioursubject to 'false'  \r\n  dismissToast(): void {\r\n    this.showToast$.next(false);\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 22
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
     "guards": [],
     "interceptors": [],
     "classes": [],
@@ -34,7 +151,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-832cefb82c8c03760984dc0beb1d113a00189c28b03cd652b800dcaffef79b4427c365a4c581a677078cf70af613b7d69efc4a1d1b1ddadc0c40d692a6332ae6",
+            "id": "component-AppComponent-e159a6b8054a1798835e3025135ad2e2cd5688255ca7e23fa3fcdc8ce27806d5227bd51236b28169ab065bdd913212c4afb5779954ba6a0cdab0380aed7f2917",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -60,10 +177,21 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 23
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "showToast",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -88,18 +216,48 @@
                 {
                     "name": "BannerComponentLocal",
                     "type": "component"
+                },
+                {
+                    "name": "ToastComponentLocal",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { ButtonComponent, BannerComponent, ExpandableComponent } from 'ngx-troy-ui';\r\nimport { ButtonComponentLocal } from './shared/components/button/button.component';\r\nimport { BannerComponentLocal } from './shared/components/banner/banner.component';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [RouterOutlet, ButtonComponent, ButtonComponentLocal, BannerComponent, BannerComponentLocal],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n  title = 'library-test';\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { ButtonComponent, BannerComponent, ExpandableComponent } from 'ngx-troy-ui';\r\nimport { ButtonComponentLocal } from './shared/components/button/button.component';\r\nimport { BannerComponentLocal } from './shared/components/banner/banner.component';\r\nimport { ToastComponentLocal } from './shared/components/toast/toast.component';\r\nimport { TOAST_STATE, ToastService } from './shared/services/toast.service';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [\r\n    RouterOutlet,\r\n    ButtonComponent,\r\n    ButtonComponentLocal,\r\n    BannerComponent,\r\n    BannerComponentLocal,\r\n    ToastComponentLocal],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n  title = 'library-test';\r\n\r\n  constructor(private toast: ToastService) { }\r\n\r\n  showToast() {\r\n    this.toast.showToast(\r\n      TOAST_STATE.success,\r\n      'Your message was sent!');\r\n  }\r\n}\r\n",
             "styleUrl": "./app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "toast",
+                        "type": "ToastService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 23,
+                "jsdoctags": [
+                    {
+                        "name": "toast",
+                        "type": "ToastService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n  <p>button</p>\r\n  <div class=\"example\">\r\n    <p>Library</p>\r\n    <troy-button [upperCase]=\"true\" [color]=\"'success'\" [customBGColor]=\"'#000000'\">test</troy-button>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-button [upperCase]=\"true\" [color]=\"'success'\" [customBGColor]=\"'#000000'\">Button</app-button>\r\n  </div>\r\n\r\n  <p>banner</p>\r\n  <div class=\"example\">\r\n    <p>Library</p>\r\n    <troy-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\" [detailMessages]=\"['test']\" [showClose]=\"true\">\r\n    </troy-banner>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\" [detailedMessages]=\"['test']\" [showClose]=\"true\">\r\n    </app-banner>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\">\r\n    </app-banner>\r\n  </div>\r\n</div>"
+            "templateData": "<div class=\"container\">\r\n  <p>button</p>\r\n  <div class=\"example\">\r\n    <p>Library</p>\r\n    <troy-button [upperCase]=\"true\" [color]=\"'success'\" [customBGColor]=\"'#000000'\">test</troy-button>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-button [upperCase]=\"true\" [color]=\"'success'\" [customBGColor]=\"'#000000'\">Button</app-button>\r\n  </div>\r\n\r\n  <p>banner</p>\r\n  <div class=\"example\">\r\n    <p>Library</p>\r\n    <troy-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\" [detailMessages]=\"['test']\" [showClose]=\"true\">\r\n    </troy-banner>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\" [detailedMessages]=\"['test']\" [showClose]=\"true\">\r\n    </app-banner>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-banner [color]=\"'info'\" [primaryText]=\"'This is a banner'\">\r\n    </app-banner>\r\n  </div>\r\n  <div class=\"example\">\r\n    <p>Local</p>\r\n    <app-button (click)=\"showToast()\">Show Toast</app-button>\r\n    <app-toast>\r\n    </app-toast>\r\n  </div>\r\n</div>"
         },
         {
             "name": "BannerComponentLocal",
@@ -506,6 +664,141 @@
                 "OnInit"
             ],
             "templateData": "<div class=\"expandable-content\" [@resizeX]=\"!vertical ? state : null\" [@resizeY]=\"vertical ? state : null\">\r\n    <ng-content></ng-content>\r\n</div>"
+        },
+        {
+            "name": "ToastComponentLocal",
+            "id": "component-ToastComponentLocal-609387dd9035722c909187a16ebc95694563e3fdc1a814cee726530d4e1b27e47fccce6a665d7f56e6b4bfa46943f21187676595242c21ee33d1bd55a4a442be",
+            "file": "src/app/shared/components/toast/toast.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-toast",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./toast.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "showToast",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean | undefined",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "toast",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ToastService",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "toastClass",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "toastMessage",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "dismiss",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "AsyncPipe",
+                    "type": "pipe"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { NgIf, AsyncPipe } from '@angular/common';\r\nimport { trigger, state, style, transition, animate } from '@angular/animations';\r\nimport { ToastService } from '../../services/toast.service';\r\n\r\n@Component({\r\n  selector: 'app-toast',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe],\r\n  templateUrl: './toast.component.html',\r\n  styleUrl: './toast.component.scss',\r\n  animations: [\r\n    trigger('toastTrigger', [ // This refers to the @trigger we created in the template      \r\n      state('open', style({ transform: 'translatex(0%)' })), // This is how the 'open' state is styled      \r\n      state('close', style({ transform: 'translatex(200%)' })), // This is how the 'close' state is styled      \r\n      transition('open <=> close', [ // This is how they're expected to transition from one to the other         \r\n        animate('300ms ease-in-out')\r\n      ])\r\n    ])\r\n  ]\r\n})\r\nexport class ToastComponentLocal {\r\n  toastClass: string[] = [];\r\n  toastMessage: string = '';\r\n  showToast: boolean | undefined;\r\n\r\n  constructor(public toast: ToastService) { }\r\n\r\n  ngOnInit(): void {\r\n    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.\r\n    //Add 'implements OnInit' to the class.\r\n  }\r\n\r\n  dismiss(): void {\r\n    this.toast.dismissToast();\r\n  }\r\n\r\n}\r\n",
+            "styleUrl": "./toast.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "toast",
+                        "type": "ToastService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 25,
+                "jsdoctags": [
+                    {
+                        "name": "toast",
+                        "type": "ToastService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div [class]=\"toast.toastState$ | async\" [@toastTrigger]=\"(toast.showToast$ | async) ? 'open' : 'close'\">\r\n    <div class=\"toast-interior\">\r\n        {{ toast.toastMessage$ | async }}\r\n    </div>\r\n\r\n    <a class=\"toast-close\" (click)=\"dismiss()\">\r\n\r\n    </a>\r\n</div>"
         }
     ],
     "modules": [],
@@ -520,6 +813,16 @@
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
                 "defaultValue": "{\r\n  providers: [\r\n    provideRouter(routes),\r\n    NgxTroyUiComponent,\r\n    importProvidersFrom([BrowserModule, BrowserAnimationsModule])\r\n  ]\r\n}"
+            },
+            {
+                "name": "TOAST_STATE",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/services/toast.service.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  success: 'success-toast',\r\n  warning: 'warning-toast',\r\n  danger: 'danger-toast'\r\n}"
             }
         ],
         "functions": [],
@@ -536,6 +839,18 @@
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
                     "defaultValue": "{\r\n  providers: [\r\n    provideRouter(routes),\r\n    NgxTroyUiComponent,\r\n    importProvidersFrom([BrowserModule, BrowserAnimationsModule])\r\n  ]\r\n}"
+                }
+            ],
+            "src/app/shared/services/toast.service.ts": [
+                {
+                    "name": "TOAST_STATE",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/services/toast.service.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  success: 'success-toast',\r\n  warning: 'warning-toast',\r\n  danger: 'danger-toast'\r\n}"
                 }
             ]
         },
@@ -554,7 +869,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -592,6 +907,34 @@
                 "name": "ExpandableComponentLocal",
                 "coveragePercent": 0,
                 "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/toast/toast.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToastComponentLocal",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/services/toast.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ToastService",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/services/toast.service.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TOAST_STATE",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
